@@ -1,12 +1,22 @@
 <template>
   <section>
-    <h1>Nuxt.js Boilerplate</h1>
+    <h1>Vue.js accessibility samples</h1>
+
+    <section>
+      <h2>Tab Component</h2>
+      <base-tab/>
+    </section>
+
   </section>
 </template>
 
 <script>
-export default {
+import BaseTab from '~/components/BaseTab'
 
+export default {
+  components: {
+    BaseTab,
+  },
 }
 </script>
 
