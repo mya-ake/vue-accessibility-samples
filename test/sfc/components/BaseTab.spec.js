@@ -54,5 +54,18 @@ describe('BaseTab', () => {
       expect(firstTabpanel.attributes()['aria-hidden']).toBe('true')
       expect(secondTabpanel.attributes()['aria-hidden']).toBeUndefined()
     })
+
+    it('1個目のタブにフォーカスがあるときに、右キーで2コメのタブに切り替わる', () => {
+      expect.assertions(3)
+
+      const [firstTab, secondTab] = wrapper.findAll('.tab__link').wrappers
+
+      firstTab.element.focus()
+      firstTab.trigger('keydown.right')
+
+      expect(firstTab.attributes()['aria-selected']).toBeUndefined()
+      expect(secondTab.attributes()['aria-selected']).toBe('true')
+      expect(document.activeElement).toBe(secondTab.element)
+    })
   })
 })

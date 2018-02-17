@@ -9,6 +9,7 @@
       >
         <a
           v-on:click.prevent="handleClickTab(index)"
+          v-on:keydown="handleKeyDownTab(index, $event)"
           v-bind:href="`tabpanel-${index}`"
           role="tab"
           ref="tabs"
@@ -92,6 +93,30 @@ export default {
       this.tabs.forEach((tab, tabIndex) => {
         tab.selected = index === tabIndex
       })
+    },
+
+    handleKeyDownTab (index, evt) {
+      switch (evt.keyCode) {
+        case 39: { // right arrow
+          this.switchTabAction(index, index + 1)
+          break
+        }
+        case 37: { // left arrow
+          this.switchTabAction(index, index - 1)
+          break
+        }
+        default:
+          break
+      }
+    },
+
+    switchTabAction (currentIndex, nextIndex) {
+      if (nextIndex < 0 || nextIndex >= this.tabs.length) {
+        return
+      }
+      this.tabs[currentIndex].selected = false
+      this.tabs[nextIndex].selected = true
+      this.$refs.tabs[nextIndex].focus()
     },
   },
 }
