@@ -12,11 +12,12 @@ describe('BaseTab', () => {
 
   describe('初期', () => {
     it('最初のタブが選択されていて、最初のタブパネルが表示されている', () => {
-      expect.assertions(2)
+      expect.assertions(3)
 
       const firstTab = wrapper.findAll('.tab__link').wrappers[0]
       const firstTabpanel = wrapper.findAll('.tabpanel').wrappers[0]
       expect(firstTab.attributes()['aria-selected']).toBe('true')
+      expect(firstTab.attributes()['tabindex']).toBe('0')
       expect(firstTabpanel.attributes()['aria-hidden']).toBeUndefined()
     })
 
@@ -24,11 +25,14 @@ describe('BaseTab', () => {
       const tabsOtherThanFirstTab = wrapper.findAll('.tab__link').wrappers.slice(1)
       const tabpanelsOtherThanFirstTabpanel = wrapper.findAll('.tabpanel').wrappers.slice(1)
 
-      const assertionCount = tabsOtherThanFirstTab.length + tabpanelsOtherThanFirstTabpanel.length
+      const assertionCount =
+      tabsOtherThanFirstTab.length * 2 +
+      tabpanelsOtherThanFirstTabpanel.length
       expect.assertions(assertionCount)
 
       for (const tab of tabsOtherThanFirstTab) {
         expect(tab.attributes()['aria-selected']).toBeUndefined()
+        expect(tab.attributes()['tabindex']).toBe('-1')
       }
       for (const tabpanel of tabpanelsOtherThanFirstTabpanel) {
         expect(tabpanel.attributes()['aria-hidden']).toBe('true')

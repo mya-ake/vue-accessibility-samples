@@ -14,6 +14,7 @@
           ref="tabs"
           v-bind:aria-controls="`tabpanel-${index}`"
           v-bind:aria-selected="tab.selected"
+          v-bind:tabindex="tab.selected ? 0 : -1"
           class="tab__link"
         >{{tab.text}}</a>
       </li>
@@ -23,6 +24,7 @@
         v-for="(tab, index) in tabs"
         v-bind:key="`tabpanel-${index}`"
         v-bind:id="`tabpanel-${index}`"
+        ref="tabpanels"
         role="tabpanel"
         class="tabpanel"
         v-html="tab.body"
