@@ -11,14 +11,17 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "test:sfc": "jest --config test/sfc/jest.conf.js"
   },
   "dependencies": {
     "normalize.css": "^7.0.0",
     "nuxt": "^1.3.0"
   },
   "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.11",
     "babel-eslint": "^8.2.1",
+    "babel-jest": "^22.2.2",
     "eslint": "^4.17.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-friendly-formatter": "^3.0.0",
@@ -28,6 +31,8 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-vue": "^4.2.2",
+    "jest": "^22.3.0",
+    "jest-vue-preprocessor": "^1.3.1",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
     "sass-resources-loader": "^1.3.2"
