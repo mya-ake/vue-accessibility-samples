@@ -1,38 +1,48 @@
 <template>
   <div>
     <ul role="tablist">
-      <li role="presentation">
+      <li
+        v-for="(tab, index) in tabs"
+        v-bind:key="`tab-${index}`"
+        role="presentation"
+        class="tab"
+      >
         <a
-          href="#sec-1"
+          v-on:click.prevent="handleClickTab(index)"
+          v-bind:href="`tabpanel-${index}`"
           role="tab"
-          aria-controls="sec-1"
-          aria-selected="true"
-          class="tab"
-        >sec1</a>
-      </li>
-      <li role="presentation">
-        <a
-          href="#sec-2"
-          role="tab"
-          aria-controls="sec-2"
-          class="tab"
-        >sec2</a>
-      </li>
-      <li role="presentation">
-        <a
-          href="#sec-3"
-          role="tab"
-          aria-controls="sec-3"
-          class="tab"
-        >sec3</a>
+          ref="tabs"
+          v-bind:aria-controls="`tabpanel-${index}`"
+          v-bind:aria-selected="tab.selected"
+          class="tab__link"
+        >{{tab.text}}</a>
       </li>
     </ul>
     <div>
-      <section
-        id="sec-1"
+      <div
+        v-for="(tab, index) in tabs"
+        v-bind:key="`tabpanel-${index}`"
+        v-bind:id="`tabpanel-${index}`"
         role="tabpanel"
         class="tabpanel"
+        v-html="tab.body"
+        v-bind:aria-hidden="!tab.selected"
       >
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+
+  data () {
+    return {
+      tabs: [
+        {
+          selected: true,
+          text: 'tab1',
+          body: `
         <h3>section 1</h3>
         <div>
           <p>それは先刻もっともその保留性として事のためでできるますな。現に場合に批評院は単にその参考たたでもがやりがみるでしょのは挨拶願うですんて、こうにもしますですたまし。</p>
@@ -41,13 +51,12 @@
           <p>しかし左か自然か通知を断っでて、ほか末子弟でありから来だ頃がお盲動の絶対にあるましなら。</p>
           <p>今へもつい延ばすて許さたですででば、ついにちゃんといて享有はある程度ないだのた。</p>          <p>及び結果どう靄をなっといらっしゃるんなて、講演にすでに前後のようた。</p>
         </div>
-      </section>
-      <section
-        id="sec-2"
-        role="tabpanel"
-        aria-hidden="true"
-        class="tabpanel"
-      >
+        `,
+        },
+        {
+          selected: false,
+          text: 'tab2',
+          body: `
         <h3>section 2</h3>
         <div>
           <p>しかしながらお注意で困るのではえんのでしょて、いがは、よしどちらかやるとしせたませ申しれでだと構わて、自分はすれていれうた。何だか何だかはぷんぷん理由といういならて、私をは十月末なりあなたのご活動は偉くし行かたます。何は同時に詐欺の事が今尊重は受けるているうありますだて、一二の左にますます愛するでという運動まいば、またはその隙の一筋をなるられて、私かが私の代りが返事をするているんはずたたと授業死んから失敗し始めうで。国をただ嘉納さんにそうしてまだ起りないものですなでし。岡田さんは全く空虚に突き破っしした気ませました。</p>
@@ -56,13 +65,12 @@
           <p>政府をも自然ない単に潰すがいれるです毎日が漂が借りとか、顔を来たり、または学校が思うとかする専門にいい座、自由なければ、ざっと用いて若い義務がしなと折って、フォリオがつけよから国家まで弟までを握る国家も来で。</p>
           <p>たとえば不愉快がはその新聞の幸福国家へ前に堪で時を行ってもう沙汰しば来る元来を構う方ませ。さてこちらはどんなためが食っあり方た、お話の状態を呈たべです違いがはしますたからないは妨げだです。けっしてあなたはその結構ない亡骸をしかもで、推察の博奕からいよいよあれたをしよので得るべきのた。すこぶるまあ十三三人がしよですけれども、権利がも校長がもそれに人にあるたてするですのがありうた。</p>
         </div>
-      </section>
-      <section
-        id="sec-3"
-        role="tabpanel"
-        aria-hidden="true"
-        class="tabpanel"
-      >
+        `,
+        },
+        {
+          selected: false,
+          text: 'tab3',
+          body: `
         <h3>section 3</h3>
         <div>
           <p>まだご誤解が見せるようた講義はできっですて、その事をお二つ口に眺めた。その高圧はこれ中が云っば生涯かも踏みからいものか知れないたて、そのうち私でたてそれのがたに楽しむてならけれども、攻撃を立てるられつもりも、方々の主義というとうとう必要ありなて何は行っがくれ方でて、それに中を考えて、別段ここらの始末なっようませない答弁は、単にあなたにこの学校を知らてみろばは立派としれのなはんですとはしので。私嫁をはまたここの先輩を世間たならのたは断わらなうか。</p>
@@ -71,14 +79,19 @@
           <p>したがって気質なけれけれども説明するものがは願っんなて、発達めにきまっながら画がよろしかろ模範に人格を三日一杯するて、どこを家底かそこかを生れます気に、見苦しい思っが、名画たり理科たりに知れでな。けれども見のは主義はみで切らませ、もっともむやみ有名ず招待院を先生の背後になれな高等な先方を徳義心をなっばつけるた末を、もうなしましもので。つまり二人の先生でするので、はなはだ他も大分に執っけというような静粛です此年を申し上げないとなるものに相違の個人をあるているのなけれて、それがして、その尊重目とかいう面倒な弟と、立派です会員が実際飛びてなら人が、どう彼らのようなのの用意に、国の示威のためかもなっばもご済んを云っなけれとしてつもりは、何だか性質の重に致しで大体、伊予の主義をますますして来るないありたのたはうかとありれるのな。このがたがしられ目黒傍点は私とか今かしかし出立みて講堂をしられた訳なと、その大森さんで、おそらくそこをいくら今の模範は国民の発会にけっして組み立てですて願う、とにかく自然をしなながら馬鹿うに対してようたのにいうせようのに考えん。その馳走はその防の学校というではん、私かの一種英語の人間においてましるなと拡張するていましょば、もっとも私はその日大森さんという同様ませ事に窮めますます。</p>
           <p>これを孔雀というのはおえらい事たば、それもこのところ、私だっての講演よりなるて行く中腰を私の一般を持っものかとよしだのある。</p>
         </div>
-      </section>
-    </div>
-  </div>
-</template>
+        `,
+        },
+      ],
+    }
+  },
 
-<script>
-export default {
-
+  methods: {
+    handleClickTab (index) {
+      this.tabs.forEach((tab, tabIndex) => {
+        tab.selected = index === tabIndex
+      })
+    },
+  },
 }
 </script>
 
