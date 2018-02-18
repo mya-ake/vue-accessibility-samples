@@ -7,7 +7,11 @@ import BaseTab from '~/components/BaseTab'
 describe('BaseTab', () => {
   let wrapper
   beforeEach(() => {
-    wrapper = shallow(BaseTab)
+    wrapper = shallow(BaseTab, {
+      propsData: {
+        size: 3,
+      },
+    })
   })
 
   describe('初期', () => {
