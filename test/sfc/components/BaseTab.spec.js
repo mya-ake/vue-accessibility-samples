@@ -67,5 +67,28 @@ describe('BaseTab', () => {
       expect(secondTab.attributes()['aria-selected']).toBe('true')
       expect(document.activeElement).toBe(secondTab.element)
     })
+
+    it('両端のタブにフォーカスがあるときに、タブ外への矢印キーを押したときにフォーカスが動かない', () => {
+      expect.assertions(4)
+
+      const tabs = wrapper.findAll('.tab__link').wrappers
+      const firstTab = tabs[0]
+      const lastTab = tabs[tabs.length - 1]
+
+      // 左端
+      firstTab.element.focus()
+      firstTab.trigger('keydown.left')
+
+      expect(firstTab.attributes()['aria-selected']).toBe('true')
+      expect(document.activeElement).toBe(firstTab.element)
+
+      // 右端
+      lastTab.trigger('click')
+      lastTab.element.focus() // clickをトリガするだけではフォーカスの移動まではされない模様
+      lastTab.trigger('keydown.right')
+
+      expect(lastTab.attributes()['aria-selected']).toBe('true')
+      expect(document.activeElement).toBe(lastTab.element)
+    })
   })
 })
