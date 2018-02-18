@@ -90,19 +90,17 @@ export default {
 
   methods: {
     handleClickTab (index) {
-      this.tabs.forEach((tab, tabIndex) => {
-        tab.selected = index === tabIndex
-      })
+      this.selectTab(index)
     },
 
     handleKeyDownTab (index, evt) {
       switch (evt.keyCode) {
         case 39: { // right arrow
-          this.switchTabAction(index, index + 1)
+          this.switchTabAction(index + 1)
           break
         }
         case 37: { // left arrow
-          this.switchTabAction(index, index - 1)
+          this.switchTabAction(index - 1)
           break
         }
         default:
@@ -110,13 +108,18 @@ export default {
       }
     },
 
-    switchTabAction (currentIndex, nextIndex) {
+    switchTabAction (nextIndex) {
       if (nextIndex < 0 || nextIndex >= this.tabs.length) {
         return
       }
-      this.tabs[currentIndex].selected = false
-      this.tabs[nextIndex].selected = true
+      this.selectTab(nextIndex)
       this.$refs.tabs[nextIndex].focus()
+    },
+
+    selectTab (index) {
+      this.tabs.forEach((tab, tabIndex) => {
+        tab.selected = index === tabIndex
+      })
     },
   },
 }
