@@ -1,9 +1,14 @@
 <template>
   <section>
-    <h1>Vue.js accessibility samples</h1>
+    <header class="header content">
+      <h1>Vue.js accessibility samples</h1>
+    </header>
 
-    <section>
-      <h2>Tab Component</h2>
+    <section class="section content">
+      <header class="section__header">
+        <h2>Tab Component</h2>
+      </header>
+
       <base-tab v-bind:size="3">
         <span slot="tab-0">tab1</span>
         <section slot="tabpanel-0">
@@ -60,5 +65,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.content {
+  max-width: 35em + 2em;
+  margin: 0 auto;
+  padding: 0 1em;
+}
+
+.header {
+  padding: {
+    top: 2em;
+    bottom: 2em;
+  }
+}
+
+.section {
+  padding: {
+    bottom: 1em;
+  };
+}
+
+.section__header {
+  padding: 0 0 2em;
+  overflow: hidden;
+}
 
 </style>
