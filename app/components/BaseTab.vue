@@ -143,6 +143,7 @@ export default {
 }
 
 .tabpanel {
+  padding: 1em;
   &[aria-hidden="true"] {
     display: none;
   }
