@@ -10,10 +10,10 @@
         <a
           v-on:click.prevent="handleClickTab(index)"
           v-on:keydown="handleKeyDownTab(index, $event)"
-          v-bind:href="`#tabpanel-${index}`"
+          v-bind:href="`#${buildId('tabpanel', index)}`"
           role="tab"
           ref="tabs"
-          v-bind:aria-controls="`tabpanel-${index}`"
+          v-bind:aria-controls="buildId('tabpanel', index)"
           v-bind:aria-selected="tab.selected"
           v-bind:tabindex="tab.selected ? 0 : -1"
           class="tab__link"
@@ -26,7 +26,7 @@
       <div
         v-for="(tab, index) in tabs"
         v-bind:key="`tabpanel-${index}`"
-        v-bind:id="`tabpanel-${index}`"
+        v-bind:id="buildId('tabpanel', index)"
         ref="tabpanels"
         role="tabpanel"
         class="tabpanel"
@@ -90,6 +90,10 @@ export default {
       this.tabs.forEach((tab, tabIndex) => {
         tab.selected = index === tabIndex
       })
+    },
+
+    buildId (name, index) {
+      return `${name}-${this.uid}-${index}`
     },
   },
 }

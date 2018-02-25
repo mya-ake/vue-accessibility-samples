@@ -65,4 +65,8 @@ module.exports = {
     'normalize.css/normalize.css',
     '~assets/scss/styles.scss',
   ],
+
+  plugins: [
+    '~/plugins/uid',
+  ],
 }
