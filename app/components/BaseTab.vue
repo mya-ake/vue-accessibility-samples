@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul role="tablist">
+    <ul role="tablist" class="tabs">
       <li
         v-for="(tab, index) in tabs"
         v-bind:key="`tab-${index}`"
@@ -96,6 +96,47 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.tabs {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tab {
+  flex: 1 0 0%;
+}
+
+.tab__link {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  padding: .8em .5em;
+  color: $ct-default;
+  text-align: center;
+  text-decoration: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: $ct-default;
+    transition-property: width left;
+    transition-duration: .2s;
+  }
+
+  &[aria-selected="true"] {
+    &::after {
+      left: 0;
+      width: 100%;
+    }
+  }
+}
 
 .tabpanel {
   &[aria-hidden="true"] {
