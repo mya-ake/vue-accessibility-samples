@@ -7,6 +7,7 @@
     <section class="section content">
       <header class="section__header">
         <h2>Tab Component</h2>
+        <span>View on <a href="https://github.com/mya-ake/vue-accessibility-samples/blob/master/app/components/BaseTab.vue">GitHub</a></span>
       </header>
 
       <base-tab v-bind:size="3">
