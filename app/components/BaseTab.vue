@@ -66,11 +66,11 @@ export default {
     handleKeyDownTab (index, evt) {
       switch (evt.keyCode) {
         case 39: { // right arrow
-          this.switchTabAction(index + 1)
+          this.changeTabSelection(index + 1)
           break
         }
         case 37: { // left arrow
-          this.switchTabAction(index - 1)
+          this.changeTabSelection(index - 1)
           break
         }
         default:
@@ -78,7 +78,7 @@ export default {
       }
     },
 
-    switchTabAction (nextIndex) {
+    changeTabSelection (nextIndex) {
       if (nextIndex < 0 || nextIndex >= this.tabs.length) {
         return
       }
