@@ -10,7 +10,7 @@
         <a
           v-on:click.prevent="handleClickTab(index)"
           v-on:keydown="handleKeyDownTab(index, $event)"
-          v-bind:href="`tabpanel-${index}`"
+          v-bind:href="`#tabpanel-${index}`"
           role="tab"
           ref="tabs"
           v-bind:aria-controls="`tabpanel-${index}`"
