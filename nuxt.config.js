@@ -13,14 +13,14 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'Vue.js accessibility',
+    title: 'Vue.js accessibility samples',
     htmlAttrs: {
       lang: 'ja',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
-      { hid: 'description', name: 'description', content: 'Vue.js accessibility' },
+      { hid: 'description', name: 'description', content: 'Vue.js accessibility samples' },
     ],
     // link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
