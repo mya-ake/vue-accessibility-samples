@@ -13,7 +13,7 @@
       <base-tab v-bind:size="3">
         <span slot="tab-0">Vue.js</span>
         <section slot="tabpanel-0" class="tabpanel-inner">
-          <h3>Vue.js</h3>
+          <h3 tabindex="0" class="tabpanel-inner__title">Vue.js</h3>
           <div>
             <p>プログレッシブJavaScriptフレームワーク</p>
             <a href="https://vuejs.org">Vue.js</a>
@@ -45,7 +45,7 @@
 
         <span slot="tab-1">アクセシビリティ</span>
         <section slot="tabpanel-1" class="tabpanel-inner">
-          <h3>アクセシビリティ</h3>
+          <h3 tabindex="0" class="tabpanel-inner__title">アクセシビリティ</h3>
           <div>
             <p>アクセシビリティ（英: accessibility）とは、近づきやすさやアクセスのしやすさのことであり、利用しやすさ、交通の便などの意味を含む。国立国語研究所「外来語」委員会は日本語への言い換えとして「利用しやすさ」を提案している[1][注釈 1]。現代では、広い種類の利用者が製品や建物、サービスなどを支障なく利用できる度合いを指していることが多い。英語本来のアクセシビリティは、ノーマライゼーションの推進の理念から社会のすべてに適用される意味合いがある。日本でのバリアフリーがこれにあたる。</p>
             <p>IT分野では、使いやすさや利用しやすさを意味するユーザビリティに近い意味として使われることが多い。この場合、技術に依存せずさまざまな情報端末やソフトウェアから利用できることを目指している。</p>
@@ -58,7 +58,7 @@
 
         <span slot="tab-2">Nuxt.js</span>
         <section slot="tabpanel-2" class="tabpanel-inner">
-          <h3>Nuxt.js</h3>
+          <h3 tabindex="0" class="tabpanel-inner__title">Nuxt.js</h3>
           <div>
             <p>Nuxt.js とはユニバーサルな Vue.js アプリケーションを構築するためのフレームワークです。</p>
             <p>サーバサイドとクライアントサイドの違いを抽象化することで無視して、一貫した方法で UIレンダリングすること に焦点を当てています。</p>
@@ -113,6 +113,10 @@ export default {
 
 .tabpanel-inner {
   line-height: 1.6;
+}
+
+.tabpanel-inner__title {
+  outline: 0;
 }
 
 </style>
