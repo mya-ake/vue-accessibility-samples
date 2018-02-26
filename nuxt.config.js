@@ -22,7 +22,7 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
       { hid: 'description', name: 'description', content: 'Vue.js accessibility samples' },
     ],
-    // link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/img/favicon/favicon.ico' }],
   },
 
   /*
@@ -59,6 +59,8 @@ module.exports = {
           },
         })
     },
+
+    publicPath: '/samples/vuejs_accessibility/_nuxt/',
   },
 
   css: [
