@@ -5,6 +5,10 @@
   "repository": "https://github.com/mya-ake/vue-accessibility-samples.git",
   "author": "mya-ake <make.app.ts@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": ">=8.0.0",
+    "npm": ">=5.0.0"
+  },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
