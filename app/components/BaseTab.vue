@@ -11,11 +11,11 @@
           v-on:click.prevent="handleClickTab(index)"
           v-on:keydown="handleKeyDownTab(index, $event)"
           v-bind:href="`#${buildId('tabpanel', index)}`"
-          role="tab"
-          ref="tabs"
           v-bind:aria-controls="buildId('tabpanel', index)"
           v-bind:aria-selected="tab.selected"
           v-bind:tabindex="tab.selected ? 0 : -1"
+          ref="tabs"
+          role="tab"
           class="tab__link"
         >
           <slot v-bind:name="`tab-${index}`" />
@@ -27,10 +27,10 @@
         v-for="(tab, index) in tabs"
         v-bind:key="`tabpanel-${index}`"
         v-bind:id="buildId('tabpanel', index)"
+        v-bind:aria-hidden="!tab.selected"
         ref="tabpanels"
         role="tabpanel"
         class="tabpanel"
-        v-bind:aria-hidden="!tab.selected"
       >
         <slot v-bind:name="`tabpanel-${index}`" />
       </div>
